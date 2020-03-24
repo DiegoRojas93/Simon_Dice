@@ -13,7 +13,7 @@ var diego = {
 var sacha = {
     nombre: `Sacha`,
     apellido: `Lifszyc`,
-    edad: 28,
+    edad: 16,
     ingeniero: true,
     cocinero: false,
     cantante: false,
@@ -29,4 +29,12 @@ function imprimirProfesiones (persona){
 
     (persona.ingeniero===true)
         ? console.log('Si es ingeniero') : console.log('No es ingeniero')
+}
+
+function imprimirSiEsMayorDeEdad(persona) {
+
+    (persona.edad>=18)
+        ? console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es mayor de edad`)
+        : console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es menor de edad`);
+        
 }
