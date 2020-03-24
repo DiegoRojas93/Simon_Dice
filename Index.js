@@ -1,25 +1,7 @@
+var x = 4, y = '4'
+
 var diego = {
-    nombre: `Diego`,
-    apellido: `Rojas`,
-    edad: 26
+    nombre: `Diego`
 }
 
-var sacha = {
-    nombre: `Sacha`,
-    apellido: `Lifszyc`,
-    edad: 28
-}
-
-var dario = {
-    nombre: `Dario`,
-    apellido: `Susnisky`,
-    edad: 27
-}
-
-function cumpleaños(persona) {
-    return{
-        ...persona,
-        edad : persona.edad + 1,
-        telefono : 3156180970 
-    }
-}
+var sacha = diego
