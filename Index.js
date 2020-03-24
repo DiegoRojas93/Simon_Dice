@@ -16,10 +16,10 @@ var dario = {
     edad: 27
 }
 
-function imprimirNombreYEdad({nombre, edad}) {
-    console.log(`Hola!, me llamo ${nombre} y tengo ${edad} años`);
+function cumpleaños(persona) {
+    return{
+        ...persona,
+        edad : persona.edad + 1,
+        telefono : 3156180970 
+    }
 }
-
-imprimirNombreYEdad(diego)
-imprimirNombreYEdad(sacha)
-imprimirNombreYEdad(dario)
