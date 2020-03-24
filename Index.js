@@ -1,10 +1,11 @@
-var nombre     // definir la variable
+var nombre = `Diego`, apellido = `Rojas`
 
-nombre=`Diego` // Asignacion de valor
+var nombreEnMayusculas = nombre.toUpperCase() //Transforma el string de nombre en mayusculas
 
-var apellido = `Rojas`, edad = 26
+var apellidoEnMinusculas = apellido.toLowerCase() //Trasforma el string de aplellido en minusculas
 
+var primeraLetraDelNombre  = nombre.charAt(1) //Obtiene la letra en la posicion en que se llama
 
-console.log(`Hola soy \n`
-    +`${nombre} ${apellido} y \n`
-    +`Tengo ${edad} años`);
+var cantidadDeLetrasDelNombre = nombre.length // obtinemos la cantidad de caracteres de un strign
+
+var str = nombre.substr(1,2) // sacamos una seccion de un string
