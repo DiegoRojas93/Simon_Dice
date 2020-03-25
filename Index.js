@@ -23,27 +23,14 @@ var sacha = {
     drone: true,
 }
 
-const INCREMENTO_DE_PESO = 0.3
-const DIAS_DEL_AÑO = 365
+var contador = 0
 
-console.log(`Al inicio del año ${diego.nombre} peso ${diego.peso} Kg`);
+const llueve = () => Math.random() < 0.25
 
-const aumentarDePeso = persona => persona.peso += INCREMENTO_DE_PESO
-const adelgazar = persona => persona.peso -= INCREMENTO_DE_PESO
-const comeMucho = () => Math.random () < 0.3
-const realizaDeporte = () => Math.random () < 0.4
- 
-const META = diego.peso - 3
-var dias = 0
+do{
+    contador++
+}while(!llueve())
 
-while (diego.peso > META){
-    if (comeMucho()) {
-        aumentarDePeso(diego)
-    }
-    if (realizaDeporte()){
-        adelgazar(diego)
-    }
-    dias +=1
-}
+var cantidad = (contador == 1) ? 'sola vez' : 'veces'
 
-console.log(`Pasaron ${dias} dias hasta que ${diego.nombre} adelgado 3kg`);
+console.log(`Fui a ver si llovia ${contador} ${cantidad}`);
