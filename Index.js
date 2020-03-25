@@ -24,12 +24,15 @@ var sacha = {
 
 const MAYORIA_DE_EDAD = 18
 
-const esMayorDeEdad = (persona) => persona.edad >= MAYORIA_DE_EDAD
+const esMayorDeEdad = ({edad}) => edad >= MAYORIA_DE_EDAD
 
 function imprimirSiEsMayorDeEdad(persona) {
-
     (esMayorDeEdad(persona))
         ? console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es mayor de edad`)
-        : console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es menor de edad`);
-        
+        : console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es menor de edad`);      
+}
+
+function permitirAcceso(persona) {
+    (!esMayorDeEdad(persona))
+        ? console.log(`ACCESO DENEGADO`) : console.log(`ACCESO PERMITIDO`);
 }
