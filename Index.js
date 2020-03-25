@@ -44,9 +44,13 @@ var vicky = {
 
 var personas = [diego, alan, martin, sacha, dario, paula, vicky]
 
-const esBaja = ({altura}) => altura < 1.8
+const pasarAlturaACms = persona => ({
+    ...persona,
+    altura: persona.altura * 100
+})
 
- var personasBajas = personas.filter(esBaja)
+var personasCms = personas.map(pasarAlturaACms)
 
- console.log(personasBajas);
+console.log(personasCms);
+
  
