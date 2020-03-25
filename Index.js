@@ -1,38 +1,49 @@
-function heredaDe(prototipoHijo,prototipoPadre) {
-    var fn = function () {}
-    fn.prototype = prototipoPadre.prototype
-    prototipoHijo.prototype = new fn
-    prototipoHijo.prototype.constructor = prototipoHijo
+class Persona{
+    constructor(nombre, apellido, altura){
+        this.nombre = nombre
+        this.apellido = apellido
+        this.edad = 20
+        this.altura = altura
+    }
+
+    saludar(fn){
+        var {nombre,apellido} = this
+        console.log(`Hola! me llamo ${nombre} ${apellido}`);
+        if(fn){
+            fn(nombre,apellido)
+        }
+    }
+
+    soyAlto(){
+        return this.altura >= 1.8
+    }
 }
 
-function Persona(nombre,apellido,altura) {
-    this.nombre = nombre
-    this.apellido = apellido
-    this.edad = 20
-    this.altura = altura
+class desarrollador extends Persona{
+    constructor(nombre,apellido,altura){
+        super (nombre,apellido,altura)
+    }
+
+    saludar(fn){
+        var {nombre,apellido} = this
+        console.log(`Hola! me llamo ${nombre} ${apellido} y soy desarrollador/a`);
+        if(fn){
+            fn(nombre,apellido,true)
+        }
+    }
 }
 
-//Recuerda que dentro de la arrow function, this está haciendo referencia al espacio global, a windows.
-
-Persona.prototype.saludar = function () {
-    console.log(`Hola! me llamo ${this.nombre} ${this.apellido}`);
-}
-  
-Persona.prototype.soyAlto= function () {
-    return this.altura >= 1.8
+function responderSaludo(nombre, apellido, esDev) {
+    console.log(`Buen dia ${nombre} ${apellido}`);
+    if (esDev) {
+        console.log(`ah míra, no sabia que eras desarrollador/a`);
+    }
 }
 
-function desarrollador(nombre,apellido) {
-    this.nombre = nombre
-    this.apellido = apellido
-}
-heredaDe(desarrollador, Persona)
+var sacha = new Persona('Sacha', 'lifzyck', 180)
+var erika = new Persona('Erika', 'Luna', 1.60)
+var arturo = new desarrollador('Arturo', 'Martinez', 1.85)
 
-desarrollador.prototype.saludar = function () {
-    console.log(`Hola! me llamo ${this.nombre} ${this.apellido} y soy desarrollador/a`);
-}
-
-
-// var sacha = new Persona('Sacha', 'lifzick', 180)
-// var erika = new Persona('Erika', 'Luna', 1.60)
-// var arturo = new Persona('Arturo', 'Martinez', 1.85)
+sacha.saludar()
+erika.saludar(responderSaludo)
+arturo.saludar(responderSaludo)
