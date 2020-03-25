@@ -2,6 +2,7 @@ var diego = {
     nombre: `Diego`,
     apellido: `Rojas`,
     edad: 26,
+    peso: 71,
     ingeniero: false,
     cocinero: false,
     cantante: false,
@@ -22,24 +23,23 @@ var sacha = {
     drone: true,
 }
 
-const MAYORIA_DE_EDAD = 18
+const INCREMENTO_DE_PESO = 0.2
+const DIAS_DEL_AÑO = 365
 
-const esMayorDeEdad = ({edad}) => edad >= MAYORIA_DE_EDAD
+console.log(`Al inicio del año ${diego.nombre} peso ${diego.peso} Kg`);
 
-const esMenorDeEdad = ({edad}) => edad <= MAYORIA_DE_EDAD
+const aumentarDePeso = persona => persona.peso += INCREMENTO_DE_PESO
 
-function imprimirSiEsMayorDeEdad(persona) {
-    (esMayorDeEdad(persona))
-        ? console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es mayor de edad`)
-        : console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es menor de edad`);      
+const adelgazar = persona => persona.peso -= INCREMENTO_DE_PESO
+
+for (var i = 1; i <= DIAS_DEL_AÑO; i++) {
+    var random = Math.random()
+
+    if (random < 0.25) {
+        aumentarDePeso(diego)
+    }else if (random < 0.5){
+        adelgazar(diego)
+    }
 }
 
-// function permitirAcceso(persona) {
-//     (!esMayorDeEdad(persona))
-//         ? console.log(`ACCESO DENEGADO`) : console.log(`ACCESO PERMITIDO`);
-// }
-
-function permitirAcceso(persona) {
-    (esMenorDeEdad(persona))
-        ? console.log(`ACCESO DENEGADO`) : console.log(`ACCESO PERMITIDO`);
-}
+console.log(`Al final del año ${diego.nombre} pesa ${diego.peso.toFixed(2)} Kg`);
