@@ -1,13 +1,22 @@
-function Persona(nombre,apellido) {
+function persona(nombre,apellido,altura) {
     this.nombre = nombre
     this.apellido = apellido
     this.edad = 20
-}
-  
-Persona.prototype.saludar = function(){
-    console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`);
+    this.altura = altura
 }
 
-var sacha = new Persona('Sacha', 'Martinez')
+persona.prototype.soyAlto = function () {
+    
+    var resultado = (this.altura >= 1.8) ? `Hola!, me llamo ${this.nombre} ${this.apellido} y soy alto debido a que mido ${this.altura}`
+    : `Hola!, me llamo ${this.nombre} ${this.apellido} y no soy alto debido a que mido ${this.altura}`
 
-sacha.saludar()
+    console.log(resultado)
+}
+
+var sacha = new persona('Sacha', 'Lifzick', 1.8)
+var erika = new persona('Erika', 'Luna', 1.6)
+var arturo = new persona('Arturo', 'Martinez', 1.8)
+
+sacha.soyAlto()
+erika.soyAlto()
+arturo.soyAlto()
