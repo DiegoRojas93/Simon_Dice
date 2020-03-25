@@ -44,9 +44,9 @@ var vicky = {
 
 var personas = [diego, alan, martin, sacha, dario, paula, vicky]
 
-const esAlta = ({altura}) => altura > 1.8
+const esBaja = ({altura}) => altura < 1.8
 
- var personasAltas = personas.filter(esAlta)
+ var personasBajas = personas.filter(esBaja)
 
- console.log(personasAltas);
+ console.log(personasBajas);
  
