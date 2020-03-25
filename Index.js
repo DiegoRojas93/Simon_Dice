@@ -23,23 +23,27 @@ var sacha = {
     drone: true,
 }
 
-const INCREMENTO_DE_PESO = 0.2
+const INCREMENTO_DE_PESO = 0.3
 const DIAS_DEL_AÑO = 365
 
 console.log(`Al inicio del año ${diego.nombre} peso ${diego.peso} Kg`);
 
 const aumentarDePeso = persona => persona.peso += INCREMENTO_DE_PESO
-
 const adelgazar = persona => persona.peso -= INCREMENTO_DE_PESO
+const comeMucho = () => Math.random () < 0.3
+const realizaDeporte = () => Math.random () < 0.4
+ 
+const META = diego.peso - 3
+var dias = 0
 
-for (var i = 1; i <= DIAS_DEL_AÑO; i++) {
-    var random = Math.random()
-
-    if (random < 0.25) {
+while (diego.peso > META){
+    if (comeMucho()) {
         aumentarDePeso(diego)
-    }else if (random < 0.5){
+    }
+    if (realizaDeporte()){
         adelgazar(diego)
     }
+    dias +=1
 }
 
-console.log(`Al final del año ${diego.nombre} pesa ${diego.peso.toFixed(2)} Kg`);
+console.log(`Pasaron ${dias} dias hasta que ${diego.nombre} adelgado 3kg`);
