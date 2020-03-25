@@ -22,18 +22,13 @@ var sacha = {
     drone: true,
 }
 
-//Booleanos
+const MAYORIA_DE_EDAD = 18
 
-function imprimirProfesiones (persona){
-    console.log(`${persona.nombre}`);
-
-    (persona.ingeniero===true)
-        ? console.log('Si es ingeniero') : console.log('No es ingeniero')
-}
+const esMayorDeEdad = (persona) => persona.edad >= MAYORIA_DE_EDAD
 
 function imprimirSiEsMayorDeEdad(persona) {
 
-    (persona.edad>=18)
+    (esMayorDeEdad(persona))
         ? console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es mayor de edad`)
         : console.log(`${persona.nombre} tiene ${persona.edad} años por lo cual es menor de edad`);
         
