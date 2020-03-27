@@ -7,32 +7,23 @@
 </head>
 <body>
     <script>
-        /*
-            !6 =  6 * 5 * 4 * 3 * 2 * 1 = 720
-            !12 = 12 * 11 * 10 * 9 * 8 * 7 *!6 = 479001600
+        //closures de JavaScript
 
-        */
+        //Un closure, básicamente, es una función que recuerda el estado de las variables al momento de ser invocada, y conserva este estado a través de reiteradas ejecuciones. Un aspecto fundamental de los closures es que son funciones que retornan otras funciones.
 
-        function factorial(n) {
-            if(!this.cache){
-                this.cache = {}
+        function crearSaludo(finalDeFrase) {
+            return function (nombre) {
+                console.log(`Hola ${nombre} ${finalDeFrase}`);
             }
-
-            debugger
-
-            if (this.cache[n]){
-                return this.cache[n]
-            }
-
-            if (n === 1){
-                return 1
-            }
-
-            this.cache[n] = n * factorial (n - 1)
-            debugger
-            return this.cache[n]
         }
 
+        const saludoArgentino = crearSaludo('che')
+        const saludoMexicano = crearSaludo('guey')
+        const saludoColombiano = crearSaludo('ñero')
+
+        saludoArgentino('Diego')  // Hola Sacha che
+        saludoMexicano('Diego')   // Hola Sacha guey
+        saludoColombiano('Diego') // Hola Sacha ñero
 
     </script>
 </body>
