@@ -3,28 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fundamentos de Javascript</title>
+    <title>Fundamentos de JavaScript</title>
 </head>
 <body>
     <script>
-        //closures de JavaScript
+        //Estructuras de datos inmutables
 
-        //Un closure, básicamente, es una función que recuerda el estado de las variables al momento de ser invocada, y conserva este estado a través de reiteradas ejecuciones. Un aspecto fundamental de los closures es que son funciones que retornan otras funciones.
 
-        function crearSaludo(finalDeFrase) {
-            return function (nombre) {
-                console.log(`Hola ${nombre} ${finalDeFrase}`);
-            }
+            // Las estructuras de datos inmutables forman parte de los principios de la Programación Funcional y nos permiten evitar tener efectos colaterales en los datos. En otras palabras, que hayan modificaciones en las variables sin nuestro consentimiento, produciendo comportamientos inesperados en el programa.
+
+            const diego = {
+                nombre: `Diego`,
+                apellido: `Fernando`,
+                edad: 26
         }
 
-        const saludoArgentino = crearSaludo('che')
-        const saludoMexicano = crearSaludo('guey')
-        const saludoColombiano = crearSaludo('ñero')
+        // const cumpleaños = persona => persona.edad++
 
-        saludoArgentino('Diego')  // Hola Sacha che
-        saludoMexicano('Diego')   // Hola Sacha guey
-        saludoColombiano('Diego') // Hola Sacha ñero
+        const cumpleañosInmutable = persona =>({
+          ...persona,
+          edad: persona.edad + 1
+        })
 
+        const diego27= cumpleañosInmutable(diego)
     </script>
 </body>
 </html>
