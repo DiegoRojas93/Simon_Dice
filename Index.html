@@ -7,13 +7,32 @@
 </head>
 <body>
     <script>
-       function divisionEntera(dividendo, divisor) {
-           if(dividendo < divisor){
-               return 0
-           }
+        /*
+            !6 =  6 * 5 * 4 * 3 * 2 * 1 = 720
+            !12 = 12 * 11 * 10 * 9 * 8 * 7 *!6 = 479001600
 
-           return 1 + divisionEntera (dividendo -divisor, divisor)
-       } 
+        */
+
+        function factorial(n) {
+            if(!this.cache){
+                this.cache = {}
+            }
+
+            debugger
+
+            if (this.cache[n]){
+                return this.cache[n]
+            }
+
+            if (n === 1){
+                return 1
+            }
+
+            this.cache[n] = n * factorial (n - 1)
+            debugger
+            return this.cache[n]
+        }
+
 
     </script>
 </body>
