@@ -7,32 +7,17 @@
 </head>
 <body>
     <script>
-        var diego = {
-            nombre: 'Diego',
-            apellido: `Rojas`,
-            edad: 28
+        function diasEntreFechas(fecha1, fecha2) {
+            const unDia = 1000 * 60 * 60 * 24 
+            const diferencia = Math.abs(fecha1 - fecha2)
+
+            return Math.floor(diferencia / unDia)
         }
 
-        function esMayorDeEdad(persona) {
-            let mensaje
-            const MAYORIA_DE_EDAD = 18
+        const hoy = new Date()
 
-            if(persona.edad > MAYORIA_DE_EDAD){
-                mensaje = 'Es mayor de edad'
-            }else{
-                mensaje2 = 'Es menor de edad'
-            }
+        const nacimiento = new Date (1993, 8, 11)
 
-            console.log(mensaje);
-            
-        }
-
-        esMayorDeEdad(diego)
-
-        for (var i = 0; i < 10; i++) {
-            console.log(i);
-        }
-        console.log(`Termino el for, el valor de i es ${i}`);
     </script>
 </body>
 </html>
