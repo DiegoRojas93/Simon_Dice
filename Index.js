@@ -2,9 +2,7 @@
 
 //----------------------------Promesas----------------------------
 
-//la promesas mejora la forma de manejar el asincronismo y dejar de lado el uso del Callbackhell.
-
-//En esta seccion solamente vamos a obtener el primer personaje pero con promesas
+//Para hacer el llamado a múltiples promesas, nos apoyamos en un array de ids con el que luego construimos otro arreglo de Promesas, que pasaremos como parámetro a Promise.all( arregloDePromesas ), con las promesas podemos encadenar llamadas en paralelo, algo que no es posible usando callbacks.
 
 
 const API_ULR = `https://swapi.co/api/`
@@ -31,33 +29,12 @@ function onError(id) {
     console.log(`Sucedio un error al obtener el personaje ${id}`);
 }
 
-obtenerPersonaje(1)
-    .then(personaje1 => {
-        console.log(`El personaje 1 es ${personaje1.name}`);
-        return obtenerPersonaje(2)
-    })
-    .then(personaje2 => {
-        console.log(`El personaje 2 es ${personaje2.name}`);
-        return obtenerPersonaje(3)
-    })
-    .then(personaje3 => {
-        console.log(`El personaje 3 es ${personaje3.name}`);
-        return obtenerPersonaje(4)
-    })
-    .then(personaje4 => {
-        console.log(`El personaje 4 es ${personaje4.name}`);
-        return obtenerPersonaje(5)
-    })
-    .then(personaje5 => {
-        console.log(`El personaje 5 es ${personaje5.name}`);
-        return obtenerPersonaje(6)
-    })
-    .then(personaje6 => {
-        console.log(`El personaje 6 es ${personaje6.name}`);
-        return obtenerPersonaje(7)
-    })
-    .then(personaje7 => {
-        console.log(`El personaje 7 es ${personaje7.name}`);
-    })
+var ids = [1, 2, 3, 4, 6, 7]
+
+var promesas = ids.map(id => obtenerPersonaje(id))
+
+Promise
+    .all(promesas)
+    .then(personajes => console.log(personajes))
     .catch(onError)
 
