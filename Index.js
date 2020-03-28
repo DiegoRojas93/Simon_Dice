@@ -1,8 +1,8 @@
 //Callback: Es una devolución de llamada, es decir, una función que se ejecuta cuando llegue la respuesta de un servidor a JS. Por ejemplo: ¿que procesos quieres hacer cuando los datos de tu servidor hayan llegado?
 
-//-------Manejando el Orden y el Asincronismo en JavaScript-------
+//----------------Manejo de errores con callbacks----------------
 
-//Callback es la funcion que pasa como parametro por cada funcion del Callbackhell
+//Si tenemos fallas de cominicacion con las APIS para obtener el Callback lo mejor seria refactorizar el codigo
 
 
 const API_ULR = `https://swapi.co/api/`
@@ -14,25 +14,40 @@ const onPeopleResponse = (persona) => console.log(`Hola, yo soy ${persona.name}`
 function obtenerPersonaje(id, Callback) {
     const url = `${API_ULR}${PEOPLE_URL.replace(`:id`,id)}`
 
-    $.get(url, opciones, function (persona) {
-        console.log(`Hola, yo soy ${persona.name}`)
-
-        if (Callback) {
-            Callback()
-        }
-    })
+    
+    $
+        .get(url, opciones, Callback)
+        .fail(() =>{
+            console.log(`Sucedió un error, no se pudo obtener el personaje ${id}`);
+        })
 }
+
+
 
 
 //Callbackhell -----------▼
 
-obtenerPersonaje(1, function () {
-    obtenerPersonaje(2, function () {
-        obtenerPersonaje(3,function () {
-            obtenerPersonaje(4,function () {
-                obtenerPersonaje(5,function () {
-                    obtenerPersonaje(6,function () {
-                        obtenerPersonaje(7)
+obtenerPersonaje(1, function (personaje) {
+    console.log(`Hola, yo soy ${personaje.name}`)
+
+    obtenerPersonaje(2, function (personaje) {
+        console.log(`Hola, yo soy ${personaje.name}`)
+
+        obtenerPersonaje(3,function (personaje) {
+            console.log(`Hola, yo soy ${personaje.name}`)
+
+            obtenerPersonaje(4,function (personaje) {
+                console.log(`Hola, yo soy ${personaje.name}`)
+
+                obtenerPersonaje(5,function (personaje) {
+                    console.log(`Hola, yo soy ${personaje.name}`)
+
+                    obtenerPersonaje(6,function (personaje) {
+                        console.log(`Hola, yo soy ${personaje.name}`)
+
+                        obtenerPersonaje(7, function (personaje) {
+                            console.log(`Hola, yo soy ${personaje.name}`)
+                        })
                     })
                 })
             })
